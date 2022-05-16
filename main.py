@@ -1,7 +1,7 @@
 import io
 import os
 import sys
-
+import time
 import PIL.Image
 import numpy as np
 import requests
@@ -61,6 +61,7 @@ if __name__ == "__main__":
             msg = st.warning("🚩 Models need to be downloaded... ")
             try:
                 with st.spinner('Initiating...'):
+                    time.sleep(3)
                     url_h5 = "https://media.githubusercontent.com/media/Vas9ka/Automatic_clean_translate_typing_Manhwa/main/cloud_detection_model/v2.h5"
                     url_inpaint = "https://media.githubusercontent.com/media/Vas9ka/Automatic_clean_translate_typing_Manhwa/main/inpainting/manhwa_model2/snap-2000.data-00000-of-00001"
                     r_h5 = requests.get(url_h5, allow_redirects=True)
