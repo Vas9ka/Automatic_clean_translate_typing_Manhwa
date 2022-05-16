@@ -1,6 +1,7 @@
 pillow~=8.3.2
 numpy~=1.19.3
 streamlit~=0.89.0
+h5py==2.10.0
 opencv-contrib-python
 paddlepaddle
 paddleocr~=2.3.0.1
