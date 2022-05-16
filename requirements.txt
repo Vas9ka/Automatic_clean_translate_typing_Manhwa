@@ -4,6 +4,7 @@ streamlit~=0.89.0
 opencv-contrib-python
 paddlepaddle-gpu
 paddleocr~=2.3.0.1
+streamlit-drawable-canvas
 tensorflow~=1.14.0
 git+https://github.com/JiahuiYu/neuralgym
 keras~=2.2.5
