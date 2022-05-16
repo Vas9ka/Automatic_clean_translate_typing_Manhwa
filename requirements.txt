@@ -7,6 +7,7 @@ paddleocr~=2.3.0.1
 streamlit-drawable-canvas
 tensorflow~=1.14.0
 git+https://github.com/JiahuiYu/neuralgym
+pyhyphen
 keras~=2.2.5
 scipy~=1.7.1
 scikit-image~=0.17.2
