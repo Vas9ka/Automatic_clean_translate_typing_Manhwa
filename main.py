@@ -4,6 +4,7 @@ import sys
 
 import PIL.Image
 import numpy as np
+import requests
 import streamlit as st
 import streamlit.components.v1 as components
 from PIL import Image, ImageDraw, ImageFont
@@ -54,6 +55,23 @@ def write_result(boxes, txts, eps=10):
 
 if __name__ == "__main__":
     st.title('Automatic Manhwa localization app')
+    checkFiles = ("cloud_detection_model/v2.h5", "inpainting/manhwa_model2/snap-2000.data-00000-of-00001")
+    for path in checkFiles:
+        if os.stat(path).st_size < 100:
+            msg = st.warning("🚩 Models need to be downloaded... ")
+            try:
+                with st.spinner('Initiating...'):
+                    url_h5 = "https://media.githubusercontent.com/media/Vas9ka/Automatic_clean_translate_typing_Manhwa/main/cloud_detection_model/v2.h5"
+                    url_inpaint = "https://media.githubusercontent.com/media/Vas9ka/Automatic_clean_translate_typing_Manhwa/main/inpainting/manhwa_model2/snap-2000.data-00000-of-00001"
+                    r_h5 = requests.get(url_h5, allow_redirects=True)
+                    r_inpaint = requests.get(url_inpaint, allow_redirects=True)
+                    open("cloud_detection_model/v2.h5",'wb').write(r_h5.content)
+                    open("inpainting/manhwa_model2/snap-2000.data-00000-of-00001").write(r_inpaint.content)
+                    del r_h5, r_inpaint
+                    msg.success("Download was successful ✅")
+            except:
+                msg.error("Error downloading model files")
+
 
     text_font = ImageFont.truetype('fonts/ko_standard.ttf', 40)
     if 'ocr_model' not in st.session_state:
