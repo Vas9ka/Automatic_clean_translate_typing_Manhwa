@@ -2,7 +2,7 @@ import neuralgym as ng
 import numpy as np
 import tensorflow as tf
 
-from generative_inpainting.inpaint_model import InpaintCAModel
+from inpainting.inpaint_model import InpaintCAModel
 
 
 def inpaint(image, mask, model_dir='manhwa_model'):
