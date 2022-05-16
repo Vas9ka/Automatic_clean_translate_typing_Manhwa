@@ -59,7 +59,7 @@ if __name__ == "__main__":
     access_token = 'sl.BHt11EHnFE_emmpZj3_IrhQxJKh6bCGBBi8yVGNq2Q87mkF5oC11PIqATqAdf7bKEiSbQnu189qwfIXhQ1D6aMBfRTX2CBLqrcAkaQf_32l4XWY5sC2VHxXAbUtTPHYiOkn8xsw'
     dbx = dropbox.Dropbox(access_token)
     for path in checkFiles:
-        if os.stat(path).st_size < 1e5:
+        if os.stat(path).st_size < 1000:
             msg = st.warning("🚩 Models need to be downloaded... ")
             try:
                 with st.spinner('Initiating...'):
