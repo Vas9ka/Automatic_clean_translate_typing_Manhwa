@@ -16,7 +16,7 @@ from keras.backend import get_session
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 WEIGHTS_PATH = "cloud_detection_model/v2.h5"
 
-DEVICE = "/gpu:0"  # /cpu:0 or /gpu:0
+DEVICE = "/cpu:0"  # /cpu:0 or /gpu:0
 # Inspect the model in training or inference modes values: 'inference' or 'training'
 TEST_MODE = "inference"
 
