@@ -1,7 +1,7 @@
 pillow~=8.3.2
 numpy~=1.19.3
 streamlit~=0.89.0
-opencv-python-headless
+opencv-contrib-python
 paddleocr~=2.3.0.1
 tensorflow~=1.14.0
 git+https://github.com/JiahuiYu/neuralgym
