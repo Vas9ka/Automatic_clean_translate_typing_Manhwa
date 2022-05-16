@@ -58,7 +58,6 @@ class CloudDetModel:
         self.session = get_session()
         init = tf.global_variables_initializer()
         self.session.run(init)
-        self.session.run(init)
         DEVICE = "/gpu:0"
         with tf.device(DEVICE):
             self.model = modellib.MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=config)

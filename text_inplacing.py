@@ -4,11 +4,11 @@ from hyphen.textwrap2 import fill
 import cv2
 import imutils
 import numpy as np
-
+import operator
 
 def find_centers(result):
-    clouds_center = {}
-    clouds_area = {}
+    clouds_center = []
+    clouds_area = []
     for i in range(result[0]['masks'].shape[2]):
         image = result[0]['masks'][:, :, i].astype(np.uint8)
         cnts = cv2.findContours(image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -18,12 +18,16 @@ def find_centers(result):
             x, y, w, h = cv2.boundingRect(c)
             cX = int(M["m10"] / M["m00"])
             cY = int(M["m01"] / M["m00"])
-            clouds_center[i] = (cX, cY)
-            clouds_area[i] = (x, y, w, h)
+            clouds_center.append((cX, cY))
+            clouds_area.append((x, y, w, h))
+        clouds_center.sort(key=operator.itemgetter(1))
+        clouds_area.sort(key=operator.itemgetter(1))
     return clouds_center, clouds_area
 
 
-def text_inpaint(image, text, cnts, areas, cnt, size):
+def text_inpaint(image, text, cnts, areas, cnt, size, color=(0, 0, 0)):
+    if not text:
+        return np.asarray(image)
     width = 10
     image = Image.fromarray(image)
     font = ImageFont.truetype('fonts/anime-ace-v05.ttf', size)
@@ -38,21 +42,19 @@ def text_inpaint(image, text, cnts, areas, cnt, size):
         width += 1
     text = fill(text, width, use_hyphenator=h_ru)
     lines = text.split('\n')
+    print(lines)
+    print(width)
     x_center = cnts[cnt][0]
     y_center = cnts[cnt][1] - (len(lines) * height / 2)
     height += 2
-    if len(lines) > 1:
-        if lines[-2][-1] == '-':
-            last_word = lines[-2].split(' ')[-1]
-            lines[-2] = lines[-2].replace(last_word, '')
-            lines[-1] = last_word[:-1] + lines[-1]
+    right_lines = []
     for line in lines:
-        if len(line) != 0:
-            if line[-1] == "!" or line[-1] == "," or line[-1] == "?":
-                last_line = " " + line[-1]
-                line[-1] = last_line
+        if '-' in line[-1]:
+            right_lines.append(line.split('-')[0] + '-')
+        else:
+            right_lines.append(line)
     for line in lines:
         width = font.getsize(line)[0]
-        d.text((x_center - width / 2, y_center), line, (0, 0, 0), font=font)
+        d.text((x_center - width / 2, y_center), line, color, font=font)
         y_center += height
-    return image
+    return np.asarray(image)
