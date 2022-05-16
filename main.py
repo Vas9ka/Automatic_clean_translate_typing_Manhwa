@@ -57,7 +57,7 @@ if __name__ == "__main__":
     st.title('Automatic Manhwa localization app')
     checkFiles = ("cloud_detection_model/v2.h5", "inpainting/manhwa_model2/snap-2000.data-00000-of-00001")
     for path in checkFiles:
-        if os.stat(path).st_size < 100:
+        if os.stat(path).st_size < 1e6:
             msg = st.warning("🚩 Models need to be downloaded... ")
             try:
                 with st.spinner('Initiating...'):
