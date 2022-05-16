@@ -5,8 +5,8 @@ import tensorflow as tf
 from inpainting.inpaint_model import InpaintCAModel
 
 
-def inpaint(image, mask, model_dir='manhwa_model'):
-    FLAGS = ng.Config('inpaint.yml')
+def inpaint(image, mask, model_dir='inpainting/manhwa_model2'):
+    FLAGS = ng.Config('inpainting/inpaint.yml')
     model = InpaintCAModel()
     assert image.shape[0] == mask.shape[0]
     assert image.shape[1] == mask.shape[1]

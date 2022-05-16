@@ -3,7 +3,7 @@
 num_gpus_per_job: 1  # number of gpus each job need
 num_cpus_per_job: 2  # number of gpus each job need
 num_hosts_per_job: 1
-memory_per_job: 4и # number of gpus each job need
+memory_per_job: 4 # number of gpus each job need
 gpu_type: 'nvidia-tesla-p100'
 
 # parameters
