@@ -59,15 +59,14 @@ if __name__ == "__main__":
     access_token = 'sl.BHt11EHnFE_emmpZj3_IrhQxJKh6bCGBBi8yVGNq2Q87mkF5oC11PIqATqAdf7bKEiSbQnu189qwfIXhQ1D6aMBfRTX2CBLqrcAkaQf_32l4XWY5sC2VHxXAbUtTPHYiOkn8xsw'
     dbx = dropbox.Dropbox(access_token)
     for path in checkFiles:
-        if os.stat(path).st_size < 1e6:
             msg = st.warning("🚩 Models need to be downloaded... ")
             try:
                 with st.spinner('Initiating...'):
                     time.sleep(3)
-                    metadata, res = dbx.files_download("v2.h5")
+                    metadata, res = dbx.files_download("/v2.h5")
                     open("cloud_detection_model/v2.h5",'wb').write(res.content)
-                    metadata, res = dbx.files_download("snap-2000.data-00000-of-00001")
-                    open("inpainting/manhwa_model2/snap-2000.data-00000-of-00001").write(res.content)
+                    metadata, res = dbx.files_download("/snap-2000.data-00000-of-00001")
+                    open("inpainting/manhwa_model2/snap-2000.data-00000-of-00001", 'wb').write(res.content)
                     msg.success("Download was successful ✅")
             except:
                 msg.error("Error downloading model files")
