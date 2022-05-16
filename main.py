@@ -62,8 +62,8 @@ if __name__ == "__main__":
             try:
                 with st.spinner('Initiating...'):
                     time.sleep(3)
-                    url_h5 = "https://media.githubusercontent.com/media/Vas9ka/Automatic_clean_translate_typing_Manhwa/main/cloud_detection_model/v2.h5"
-                    url_inpaint = "https://media.githubusercontent.com/media/Vas9ka/Automatic_clean_translate_typing_Manhwa/main/inpainting/manhwa_model2/snap-2000.data-00000-of-00001"
+                    url_h5 = "https://www.dropbox.com/s/t3iuvotfvf5i6i1/v2.h5?dl=0"
+                    url_inpaint = "https://www.dropbox.com/s/r3ga8xk667nnvmb/snap-2000.data-00000-of-00001?dl=0"
                     r_h5 = requests.get(url_h5, allow_redirects=True)
                     r_inpaint = requests.get(url_inpaint, allow_redirects=True)
                     open("cloud_detection_model/v2.h5",'wb').write(r_h5.content)
