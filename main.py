@@ -12,9 +12,9 @@ from paddleocr import paddleocr
 from streamlit_drawable_canvas import st_canvas
 import translate
 
-INPAINT_DIR = os.path.abspath('generative_inpainting/')
+INPAINT_DIR = os.path.abspath('inpainting/')
 sys.path.append(INPAINT_DIR)
-from generative_inpainting import inpaint
+from inpainting import inpaint
 
 import cloud_detection
 from text_inplacing import find_centers, text_inpaint
