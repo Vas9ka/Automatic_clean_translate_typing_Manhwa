@@ -4,7 +4,7 @@ streamlit~=0.89.0
 opencv-python~=4.5.3.56
 paddleocr~=2.3.0.1
 tensorflow~=1.14.0
-neuralgym~=0.0.1
+git+https://github.com/JiahuiYu/neuralgym
 keras~=2.2.5
 scipy~=1.7.1
 scikit-image~=0.17.2
